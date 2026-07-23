@@ -1,0 +1,77 @@
+functional Requirements:
+ 
+                  Project Name -  studenthub portal
+
+Objective:
+StudentHub Portal is a web application designed to help students manage their academic activities efficiently.
+
+User Roles:
+
+ (1) Student:
+Register Account
+Login
+View Dashboard
+View Courses
+View Attendance
+View Results
+Submit Feedback
+Update Profile
+
+(2)Admin:
+Manage Students
+Manage Courses
+Manage Attendance
+Manage Results
+View Student Feedback
+
+Functional Modules:
+
+1. Home
+
+Welcome Page
+Navigation Bar
+StudentHub Introduction
+
+2. Assignment
+
+View Assignment
+Assignment Details
+Submission Date
+
+3. Attendance
+
+View Attendance Percentage
+Subject-wise Attendance
+
+4. Contact
+Contact Form
+College Information
+
+5. Course
+View Available Courses
+Course Description
+
+6. Dashboard
+Quick Overview
+Navigation Cards
+
+7. Login
+Username
+Password
+Authentication
+
+8. Profile
+Student Details
+Update Information
+
+9. Register
+Create New Account
+
+10. Result
+Subject Marks
+Grade
+CGPA
+
+11. Student Feedback
+Give Feedback
+Rate College Services

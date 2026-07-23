@@ -1,0 +1,28 @@
+Home (Dashboard)
+│
+├── About
+├── Assignment
+│      ├── Assignment List
+│      └── Upload Assignment
+│
+├── Attendance
+│      └── Attendance Record
+│
+├── Course
+│      └── Available Courses
+│
+├── Contact
+│      └── Contact Form
+│
+├── Login
+│      ├── Signup
+│      └── Forgot Password
+│
+├── Profile
+│      └── Student Details
+│
+├── Result
+│      └── Semester Marks
+│
+└── Faculty Feedback
+       └── Rating & Comments
