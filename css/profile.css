@@ -1,0 +1,78 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 20px;
+}
+
+h1 {
+    color: blue;
+}
+
+
+form {
+    width: 400px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid gray;
+}
+
+
+label {
+    font-weight: bold;
+}
+
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+
+
+input[type="radio"] {
+    width: auto;
+}
+
+
+input[type="file"] {
+    width: auto;
+}
+
+textarea {
+    height: 80px;
+}
+
+
+input[type="submit"] {
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: darkblue;
+}
+
+
+a {
+    text-decoration: none;
+    color: blue;
+    margin-right: 10px;
+}
+
+a:hover {
+    color: red;
+}
+
+
+hr {
+    margin-top: 30px;
+}

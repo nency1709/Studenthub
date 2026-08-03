@@ -1,0 +1,49 @@
+body{
+    background-color: #eeeeee;
+    font-family: Arial;
+}
+
+table{
+    width: 100%;
+    background-color: white;
+}
+
+td{
+    padding: 10px;
+}
+
+img{
+    border: 2px solid black;
+}
+
+a{
+    color: blue;
+    text-decoration: none;
+    padding: 5px;
+}
+
+a:hover{
+    color: red;
+}
+
+h1{
+    color: navy;
+    text-align: center;
+}
+
+h2{
+    color: green;
+}
+
+ul{
+    background-color: white;
+    padding: 10px;
+}
+
+p{
+    font-size: 16px;
+}
+
+hr{
+    border: 1px solid gray;
+}

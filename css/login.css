@@ -1,0 +1,67 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+h2 {
+    color: blue;
+}
+
+
+input {
+    width: 250px;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid gray;
+}
+
+button {
+    width: 100px;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkblue;
+}
+
+
+input[type="submit"],
+input[type="reset"] {
+    width: 100px;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="reset"] {
+    background-color: red;
+}
+
+input[type="submit"]:hover {
+    background-color: darkgreen;
+}
+
+input[type="reset"]:hover {
+    background-color: darkred;
+}
+
+input[type="checkbox"] {
+    width: auto;
+}
+
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover {
+    color: red;
+}

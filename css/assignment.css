@@ -1,0 +1,60 @@
+body{
+    background-color: #f2f2f2;
+    font-family: Arial;
+}
+
+h1{
+    color: darkblue;
+}
+
+table{
+    width: 80%;
+    background-color: white;
+    border-collapse: collapse;
+}
+
+th{
+    background-color: royalblue;
+    color: white;
+}
+
+th,td{
+    border: 1px solid gray;
+    padding: 10px;
+    text-align: center;
+}
+
+tr:hover{
+    background-color: #e6f2ff;
+}
+
+label{
+    font-weight: bold;
+}
+
+input[type="submit"],
+input[type="reset"]{
+    background-color: royalblue;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover{
+    background-color: darkblue;
+}
+
+a{
+    text-decoration: none;
+    color: blue;
+    margin: 8px;
+}
+
+a:hover{
+    color: red;
+}
+
+hr{
+    width: 80%;
+}

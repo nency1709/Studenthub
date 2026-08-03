@@ -1,0 +1,60 @@
+/* Body */
+body{
+    background-color: lightgray;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1{
+    color: blue;
+}
+ title{
+    color: blue;
+    text-align: center;
+    font-weight: bold;
+ }
+/* Table */
+table{
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    background-color: white;
+}
+th{
+    background-color: skyblue;
+    color: black;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+/* Table Data */
+td{
+    padding: 10px;
+    border: 1px solid black;
+}
+
+/* Text Box */
+input[type="text"]{
+    padding: 8px;
+    width: 200px;
+}
+
+/* Buttons */
+input[type="submit"],
+input[type="reset"]{
+    padding: 8px 15px;
+    background-color: blue;
+    color: white;
+    border: none;
+}
+
+/* Links */
+a{
+    text-decoration: none;
+    color: blue;
+    margin: 10px;
+}
+
+a:hover{
+    color: red;
+}

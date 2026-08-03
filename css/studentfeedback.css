@@ -1,0 +1,73 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+
+h2 
+{
+text-align: center;
+color: red;
+}
+
+
+form {
+ width: 350px;
+margin: auto;
+ background-color: white;
+padding: 20px;
+border: 1px solid gray;
+}
+
+
+label {
+    font-weight: bold;
+}
+
+
+input,
+select,
+textarea 
+{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+
+
+textarea {
+    height: 80px;
+}
+
+
+input[type="submit"] {
+    width: 48%;
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+input[type="reset"] {
+    width: 48%;
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+input[type="submit"]:hover {
+    background-color: darkblue;
+}
+
+input[type="reset"]:hover {
+    background-color: black;
+}
