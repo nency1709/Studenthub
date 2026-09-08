@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <h2>Registration Form</h2>
+  <form id="registrationForm">
+   <label for="name">Name:</label>
+  <input type="text" id="name" placeholder="Enter your name">
+  <span id="nameError" class="error"></span>
+ <label for="email">Email:</label>
+ <input type="text" id="email" placeholder="example@gmail.com">
+ <span id="emailError" class="error"></span>
+
+ <label for="phone">Phone Number:</label>
+  <input type="text" id="phone" placeholder="10 digit number">
+  <span id="phoneError" class="error"></span>
+  <label for="password">Password:</label>
+  <input type="password" id="password" placeholder="Enter password">
+  <span id="passwordError" class="error"></span>
+  <label for="confirmPassword">Confirm Password:</label>
+  <input type="password" id="confirmPassword"
+ placeholder="Re-enter password">
+ <span id="confirmPasswordError" class="error"></span>
+
+  <label for="course">Course:</label>
+   <select id="course">
+  <option value="">Select Course</option>
+  <option value="BCA">BCA</option>
+  <option value="B.Tech">B.Tech</option>
+  <option value="MCA">MCA</option>
+   <option value="M.Tech">M.Tech</option>
+  </select>
+
+        <span id="courseError" class="error"></span>
+  <label for="year">Year:</label>
+  <select id="year">
+  <option value="">Select Year</option>
+  <option value="1">1st Year</option>
+  <option value="2">2nd Year</option>
+   <option value="3">3rd Year</option>
+  <option value="4">4th Year</option>
+        </select>
+        <span id="yearError" class="error"></span>
+          <label>Gender:</label>
+ <div class="gender">
+            <input type="radio" name="gender" value="Male">
+            Male
+ <input type="radio" name="gender" value="Female">
+            Female
+ <input type="radio" name="gender" value="Other">
+            Other
+        </div>
+  <span id="genderError" class="error"></span>
+         <div class="terms">
+  <input type="checkbox" id="terms">
+ <label for="terms">
+                I accept Terms and Conditions
+            </label>
+        </div>
+        <span id="termsError" class="error"></span>
+        <button type="submit">Register</button>
+  <p id="successMessage" class="success"></p>
+    </form>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>
