@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Fetch Practical</title>
+</head>
+
+<body>
+ <h1>Student Details</h1>
+  <div id="student"></div>
+ <script>
+  // Fetch JSON file
+  fetch("students.json")
+  // Convert response into JSON
+  .then(response => response.json())
+  // Get JSON data
+  .then(students => {
+
+  let output = "";
+  // Display each student
+     students.forEach(student => {
+  output += `
+ <h2>${student.name}</h2>
+   <p>Age: ${student.age}</p>
+     <p>Course: ${student.course}</p>
+   <p>Marks: ${student.marks}</p>
+<hr>
+    `;
+  });
+
+    // Display on webpage
+     document.getElementById("student").innerHTML = output;
+   })
+
+     // Error handling
+  .catch(error => {
+   console.log("Error:", error);
+  });
+ </script>
+
+</body>
+</html>
