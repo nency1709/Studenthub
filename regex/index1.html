@@ -1,0 +1,170 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Hub Home</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="../css/assignment.css">
+    <link rel="stylesheet" href="../css/attendence.css">
+    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="stylesheet" href="../css/course.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/result.css">
+    <link rel="stylesheet" href="../css/studentfeedback.css">
+</head>
+
+<body>
+
+    <header>
+        <h2>Student Hub</h2>
+    </header>
+
+    <img src="images/charusat.png"
+         alt="CHARUSAT University Logo"
+         width="10%"
+         height="60">
+
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="login.html">Login</a>
+        <a href="profile.html">Profile</a>
+        <a href="about.html">About</a>
+        <a href="assignment.html">Assignment</a>
+        <a href="attendance.html">Attendance</a>
+        <a href="contact.html">Contact</a>
+        <a href="course.html">Course</a>
+        <a href="result.html">Result</a>
+        <a href="studentsfeedback.html">Student Feedback</a>
+    </nav>
+
+    <main>
+        <h1>Welcome to Student Hub Portal</h1>
+
+        <p>
+            This portal provides information about assignments,
+            attendance, contact, courses, dashboard, login,
+            registration, results and student feedback.
+        </p>
+
+        <hr>
+
+        <h2>Regex Validation Demo</h2>
+
+        <form id="validationForm" novalidate>
+
+            <label for="email">Email Address:</label>
+            <br>
+
+            <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <br><br>
+
+            <label for="password">Password:</label>
+            <br>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+            >
+
+            <br><br>
+
+            <button type="submit">Validate</button>
+            <button type="reset">Reset</button>
+
+            <p id="message" role="status" aria-live="polite"></p>
+
+        </form>
+    </main>
+
+    <footer>
+        <h6>
+            &copy; 2026 CHARUSAT University | Made by ID No. 25DCE023
+        </h6>
+    </footer>
+
+    <script src="../js/about.js"></script>
+    <script src="../js/assignment.js"></script>
+    <script src="../js/attendence.js"></script>
+    <script src="../js/contact.js"></script>
+    <script src="../js/course.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/profile.js"></script>
+    <script src="../js/result.js"></script>
+    <script src="../js/studentfeedback.js"></script>
+
+    <script>
+        // Regex pattern for email validation
+        const emailRegex =
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        // Regex pattern for password validation
+        // Minimum 8 characters, uppercase, lowercase,
+        // number and special character
+        const passwordRegex =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        const form = document.getElementById("validationForm");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", function (event) {
+
+            // Prevent page refresh
+            event.preventDefault();
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+
+            // Check empty fields
+            if (email === "" || password === "") {
+                message.textContent = "Please fill in all fields.";
+                return;
+            }
+
+            // Validate email using Regex
+            if (!emailRegex.test(email)) {
+                message.textContent =
+                    "Invalid email! Please enter a valid email address.";
+                return;
+            }
+
+            // Validate password using Regex
+            if (!passwordRegex.test(password)) {
+                message.textContent =
+                    "Password must contain at least 8 characters, " +
+                    "one uppercase letter, one lowercase letter, " +
+                    "one number and one special character.";
+                return;
+            }
+
+            // If both validations pass
+            message.textContent =
+                "Email and password format validated successfully!";
+        });
+
+        // Clear validation message on reset
+        form.addEventListener("reset", function () {
+            message.textContent = "";
+        });
+    </script>
+
+</body>
+</html>
+```
