@@ -1,0 +1,23 @@
+[
+  {
+    "id": "25DCE023",
+    "name": "Rahul Patel",
+    "email": "rahul@example.com",
+    "course": "Computer Science Engineering",
+    "semester": 3
+  },
+  {
+    "id": "25DCE024",
+    "name": "Priya Shah",
+    "email": "priya@example.com",
+    "course": "Computer Science Engineering",
+    "semester": 3
+  },
+  {
+    "id": "25DCE025",
+    "name": "Amit Patel",
+    "email": "amit@example.com",
+    "course": "Information Technology",
+    "semester": 3
+  }
+]
