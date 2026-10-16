@@ -1,0 +1,485 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Hub Home</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/assignment.css">
+    <link rel="stylesheet" href="css/attendence.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/course.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/result.css">
+    <link rel="stylesheet" href="css/studentfeedback.css">
+
+    <style>
+        .data-section {
+            margin: 25px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+
+        .data-section input {
+            padding: 10px;
+            margin: 8px 0;
+            max-width: 100%;
+        }
+
+        .data-section button {
+            padding: 10px 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: #e8eef8;
+        }
+
+        #message,
+        #studentMessage,
+        #csvMessage {
+            margin-top: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>Student Hub</h2>
+    </header>
+
+    <img src="../images/charusat.png"
+         alt="CHARUSAT University Logo"
+         width="10%"
+         height="60">
+
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="pages/login.html">Login</a>
+        <a href="pages/profile.html">Profile</a>
+        <a href="pages/about.html">About</a>
+        <a href="pages/assignment.html">Assignment</a>
+        <a href="pages/attendance.html">Attendance</a>
+        <a href="pages/contact.html">Contact</a>
+        <a href="pages/course.html">Course</a>
+        <a href="pages/result.html">Result</a>
+        <a href="pages/studentsfeedback.html">Student Feedback</a>
+    </nav>
+
+    <main>
+        <h1>Welcome to Student Hub Portal</h1>
+
+        <p>
+            This portal provides information about assignments,
+            attendance, contact, courses, login, results and student feedback.
+        </p>
+
+        <hr>
+
+        <!-- REGEX VALIDATION -->
+        <section class="data-section">
+            <h2>Regex Validation Demo</h2>
+
+            <form id="validationForm" novalidate>
+                <label for="email">Email Address:</label><br>
+                <input type="text" id="email"
+                       placeholder="Enter your email" required>
+
+                <br><br>
+
+                <label for="password">Password:</label><br>
+                <input type="password" id="password"
+                       placeholder="Enter your password" required>
+
+                <br><br>
+
+                <button type="submit">Validate</button>
+                <button type="reset">Reset</button>
+
+                <p id="message" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- JSON DATA -->
+        <section class="data-section">
+            <h2>Student Details (JSON Data)</h2>
+
+            <p>
+                Student information is loaded from students.json.
+            </p>
+
+            <input type="text" id="studentSearch"
+                   placeholder="Search by student ID or name">
+
+            <button type="button" id="searchStudent">
+                Search Student
+            </button>
+
+            <button type="button" id="showAllStudents">
+                Show All Students
+            </button>
+
+            <button type="button" id="loadStudents">
+                Load JSON Data
+            </button>
+
+            <p id="studentMessage" role="status"></p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Course</th>
+                        <th>Semester</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTable">
+                    <tr>
+                        <td colspan="5">Click Load JSON Data to load records.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <!-- CSV DATA -->
+        <section class="data-section">
+            <h2>Assignment Details (CSV Data)</h2>
+
+            <p>
+                Assignment records are loaded from assignments.csv.
+            </p>
+
+            <button type="button" id="loadAssignments">
+                Load CSV Data
+            </button>
+
+            <p id="csvMessage" role="status"></p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Assignment ID</th>
+                        <th>Subject</th>
+                        <th>Title</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="assignmentTable">
+                    <tr>
+                        <td colspan="5">Click Load CSV Data to load records.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer>
+        <h6>
+            &copy; 2026 CHARUSAT University |
+            Made by ID No. 25DCE023
+        </h6>
+    </footer>
+
+    <!-- Existing JavaScript files -->
+    <script src="js/about.js"></script>
+    <script src="js/assignment.js"></script>
+    <script src="js/attendence.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/course.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/result.js"></script>
+    <script src="js/studentfeedback.js"></script>
+
+    <script>
+        // 1. REGEX VALIDATION
+
+        const emailRegex =
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        const passwordRegex =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        const form = document.getElementById("validationForm");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+
+            if (email === "" || password === "") {
+                message.textContent = "Please fill in all fields.";
+                return;
+            }
+
+            if (!emailRegex.test(email)) {
+                message.textContent = "Please enter a valid email address.";
+                return;
+            }
+
+            if (!passwordRegex.test(password)) {
+                message.textContent =
+                    "Password must contain at least 8 characters, " +
+                    "one uppercase, one lowercase, one number " +
+                    "and one special character (@$!%*?&).";
+                return;
+            }
+
+            message.textContent =
+                "Email and password format validated successfully!";
+        });
+
+        form.addEventListener("reset", function () {
+            message.textContent = "";
+        });
+
+
+        // 2. LOAD STUDENT DATA FROM JSON
+
+        let students = [];
+
+        const studentTable = document.getElementById("studentTable");
+        const studentMessage = document.getElementById("studentMessage");
+        const studentSearch = document.getElementById("studentSearch");
+
+        function displayStudents(records) {
+            studentTable.replaceChildren();
+
+            if (records.length === 0) {
+                const row = studentTable.insertRow();
+                const cell = row.insertCell();
+
+                cell.colSpan = 5;
+                cell.textContent = "No student records found.";
+                return;
+            }
+
+            records.forEach(function (student) {
+                const row = studentTable.insertRow();
+
+                [
+                    student.id,
+                    student.name,
+                    student.email,
+                    student.course,
+                    student.semester
+                ].forEach(function (value) {
+                    const cell = row.insertCell();
+                    cell.textContent = value;
+                });
+            });
+        }
+
+        async function loadStudents() {
+            studentMessage.textContent = "Loading JSON data...";
+
+            try {
+                const response = await fetch("data/students.json");
+
+                if (!response.ok) {
+                    throw new Error("Could not load students.json");
+                }
+
+                const data = await response.json();
+
+                if (!Array.isArray(data)) {
+                    throw new Error("Invalid student JSON format");
+                }
+
+                students = data;
+                displayStudents(students);
+
+                studentMessage.textContent =
+                    "JSON loaded successfully! Total students: " +
+                    students.length;
+
+            } catch (error) {
+                studentMessage.textContent =
+                    error.message +
+                    ". Check the file path and run using Live Server.";
+            }
+        }
+
+        document.getElementById("loadStudents")
+            .addEventListener("click", loadStudents);
+
+        document.getElementById("searchStudent")
+            .addEventListener("click", function () {
+                if (students.length === 0) {
+                    studentMessage.textContent =
+                        "Please load JSON data first.";
+                    return;
+                }
+
+                const query = studentSearch.value.trim().toLowerCase();
+
+                const filteredStudents = students.filter(function (student) {
+                    return String(student.id).toLowerCase().includes(query) ||
+                           String(student.name).toLowerCase().includes(query);
+                });
+
+                displayStudents(filteredStudents);
+
+                studentMessage.textContent =
+                    "Matching records: " + filteredStudents.length;
+            });
+
+        document.getElementById("showAllStudents")
+            .addEventListener("click", function () {
+                if (students.length === 0) {
+                    loadStudents();
+                    return;
+                }
+
+                studentSearch.value = "";
+                displayStudents(students);
+
+                studentMessage.textContent =
+                    "Showing all " + students.length + " students.";
+            });
+
+
+        // 3. LOAD ASSIGNMENT DATA FROM CSV
+
+        const assignmentTable =
+            document.getElementById("assignmentTable");
+
+        const csvMessage = document.getElementById("csvMessage");
+
+        function parseCSVLine(line) {
+            const values = [];
+            let value = "";
+            let insideQuotes = false;
+
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+
+                if (char === '"') {
+                    if (insideQuotes && line[i + 1] === '"') {
+                        value += '"';
+                        i++;
+                    } else {
+                        insideQuotes = !insideQuotes;
+                    }
+                } else if (char === "," && !insideQuotes) {
+                    values.push(value.trim());
+                    value = "";
+                } else {
+                    value += char;
+                }
+            }
+
+            values.push(value.trim());
+            return values;
+        }
+
+        async function loadAssignments() {
+            csvMessage.textContent = "Loading CSV data...";
+
+            try {
+                const response = await fetch("data/assignments.csv");
+
+                if (!response.ok) {
+                    throw new Error("Could not load assignments.csv");
+                }
+
+                const csvText = await response.text();
+
+                const lines = csvText
+                    .replace(/^\uFEFF/, "")
+                    .split(/\r?\n/)
+                    .filter(line => line.trim() !== "");
+
+                if (lines.length < 2) {
+                    throw new Error("CSV file has no assignment records");
+                }
+
+                const headers = parseCSVLine(lines[0]);
+                const expectedHeaders = [
+                    "assignmentId",
+                    "subject",
+                    "title",
+                    "dueDate",
+                    "status"
+                ];
+
+                if (
+                    headers.length !== expectedHeaders.length ||
+                    !expectedHeaders.every((header, index) =>
+                        headers[index] === header
+                    )
+                ) {
+                    throw new Error("CSV headers do not match the expected format");
+                }
+
+                const assignments = lines.slice(1).map(parseCSVLine);
+
+                assignmentTable.replaceChildren();
+
+                assignments.forEach(function (assignment) {
+                    if (assignment.length !== headers.length) {
+                        throw new Error("A CSV row has an incorrect number of columns");
+                    }
+
+                    const row = assignmentTable.insertRow();
+
+                    assignment.forEach(function (value) {
+                        const cell = row.insertCell();
+                        cell.textContent = value;
+                    });
+                });
+
+                csvMessage.textContent =
+                    "CSV loaded successfully! Total assignments: " +
+                    assignments.length;
+
+            } catch (error) {
+                csvMessage.textContent =
+                    error.message +
+                    ". Check the CSV file and run using Live Server.";
+
+                assignmentTable.replaceChildren();
+            }
+        }
+
+        document.getElementById("loadAssignments")
+            .addEventListener("click", loadAssignments);
+    </script>
+
+</body>
+</html>
