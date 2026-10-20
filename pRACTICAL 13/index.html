@@ -1,0 +1,288 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management API</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background: #f2f2f2;
+        }
+
+        .box {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        input {
+            width: 95%;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        #message {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>Event Management System</h2>
+
+    <form id="eventForm">
+
+        <input type="hidden" id="eventId">
+
+        <input
+            type="text"
+            id="eventName"
+            placeholder="Enter Event Name"
+            required
+        >
+
+        <input
+            type="date"
+            id="eventDate"
+            required
+        >
+
+        <button type="submit" id="saveButton">
+            Add Event
+        </button>
+
+        <button type="button" id="cancelButton" hidden>
+            Cancel Edit
+        </button>
+
+    </form>
+
+    <p id="message" role="status"></p>
+
+    <h3>Event List</h3>
+
+    <button type="button" onclick="loadEvents()">
+        Refresh List
+    </button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Event Name</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody id="eventList"></tbody>
+    </table>
+
+</div>
+
+<script>
+const API = "api.php";
+
+const form = document.getElementById("eventForm");
+const eventId = document.getElementById("eventId");
+const eventName = document.getElementById("eventName");
+const eventDate = document.getElementById("eventDate");
+const eventList = document.getElementById("eventList");
+const message = document.getElementById("message");
+const saveButton = document.getElementById("saveButton");
+const cancelButton = document.getElementById("cancelButton");
+
+function showMessage(text) {
+    message.textContent = text;
+}
+
+async function requestAPI(method, data = null) {
+    const options = { method };
+
+    if (data !== null) {
+        options.headers = {
+            "Content-Type": "application/json"
+        };
+
+        options.body = JSON.stringify(data);
+    }
+
+    const response = await fetch(API, options);
+    const result = await response.json();
+
+    if (!response.ok) {
+        throw new Error(result.message || "Request failed");
+    }
+
+    return result;
+}
+
+// LIST
+async function loadEvents() {
+    showMessage("Loading events...");
+
+    try {
+        const events = await requestAPI("GET");
+
+        eventList.replaceChildren();
+
+        events.forEach(event => {
+            const tr = document.createElement("tr");
+
+            const idCell = document.createElement("td");
+            idCell.textContent = event.id;
+
+            const nameCell = document.createElement("td");
+            nameCell.textContent = event.event_name;
+
+            const dateCell = document.createElement("td");
+            dateCell.textContent = event.event_date;
+
+            const actionCell = document.createElement("td");
+
+            const editButton = document.createElement("button");
+            editButton.textContent = "Edit";
+
+            editButton.onclick = () => editEvent(event);
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+
+            deleteButton.onclick = () => deleteEvent(event.id);
+
+            actionCell.append(editButton, deleteButton);
+            tr.append(idCell, nameCell, dateCell, actionCell);
+
+            eventList.appendChild(tr);
+        });
+
+        showMessage("Events loaded successfully");
+
+    } catch (error) {
+        showMessage(error.message);
+    }
+}
+
+// ADD AND UPDATE
+form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const id = eventId.value;
+
+    const data = {
+        action: id ? "update" : "add",
+        event_name: eventName.value.trim(),
+        event_date: eventDate.value
+    };
+
+    if (id) {
+        data.id = Number(id);
+    }
+
+    if (!data.event_name || !data.event_date) {
+        showMessage("Please fill all fields");
+        return;
+    }
+
+    saveButton.disabled = true;
+    showMessage("Saving event...");
+
+    try {
+        const result = await requestAPI("POST", data);
+
+        showMessage(result.message);
+
+        form.reset();
+        resetForm();
+
+        await loadEvents();
+
+    } catch (error) {
+        showMessage(error.message);
+
+    } finally {
+        saveButton.disabled = false;
+    }
+});
+
+// LOAD DETAILS INTO FORM
+function editEvent(event) {
+    eventId.value = event.id;
+    eventName.value = event.event_name;
+    eventDate.value = event.event_date;
+
+    saveButton.textContent = "Update Event";
+    cancelButton.hidden = false;
+
+    showMessage("Edit event details and click Update");
+}
+
+// CANCEL EDIT
+function resetForm() {
+    eventId.value = "";
+    saveButton.textContent = "Add Event";
+    cancelButton.hidden = true;
+}
+
+cancelButton.addEventListener("click", function() {
+    form.reset();
+    resetForm();
+    showMessage("Edit cancelled");
+});
+
+// DELETE
+async function deleteEvent(id) {
+    if (!confirm("Are you sure you want to delete this event?")) {
+        return;
+    }
+
+    showMessage("Deleting event...");
+
+    try {
+        const result = await requestAPI("POST", {
+            action: "delete",
+            id: Number(id)
+        });
+
+        showMessage(result.message);
+        await loadEvents();
+
+    } catch (error) {
+        showMessage(error.message);
+    }
+}
+
+// INITIAL LOAD
+loadEvents();
+</script>
+
+</body>
+</html>
